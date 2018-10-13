@@ -1,0 +1,33 @@
+Body {
+    align-content: center;
+}
+
+    /* classes */
+.container {
+    display: flex;
+    justify-content: center;
+}    
+.hidden {
+    display: none;
+}
+
+.navbar {
+    display:flex;
+    justify-content: center;
+    opacity: 0.5;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+
+    /* id's */
+#begin {
+    font-size: 20px;
+    margin-top: 20%;
+}
+
+#searchForm {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+

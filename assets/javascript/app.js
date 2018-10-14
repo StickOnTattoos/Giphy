@@ -1,19 +1,42 @@
 // api key hEBByAJLq8AXGnx7ep9Yog2Dy33dSvRu
 
-var topic = [];
 
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        searchInput + "&api_key=dc6zaTOxFJmzC&limit=10";
+var topicArray = [];
 
-
-$("#begin").on("click", function () {
-    console.log("Hello");
-    $("#begin").addClass("hidden");
-    $("#searchForm").removeClass("hidden");
-    $("#searchButton").removeClass("hidden");
-})
-
-$("#searchButton").on("click", function() {
+function beholdTheGifs(topic) {
+    var queryURL ="https://api.giphy.com/v1/gifs/search?q=" +
+    topic + "&api_key=dc6zaTOxFJmzC&limit=10";
     
-    console.log("click click boom");
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        console.log(response);
+
+        var results = response.data
+        for (var i = 0; i < results.length; i++) {
+            var topicDiv = $("<div>");
+            var p = $("<p>").text("Rating: " + results[i].rating);
+            var topicImage = $("<img>");
+            topicImage.attr("src", results[i].images.fixed_height.url);
+            topicDiv.append(p);
+            topicDiv.append(topicImage);
+            $("#imagesTarget").prepend(topicDiv);
+        }
+    })
+}
+
+$("#addTopic").on("click", function (event) {
+    (event).preventDefault();
+    var inputTopic = $("#topicInput").val().trim();
+    beholdTheGifs (inputTopic);
+    console.log("Hello World");
+
+    var buttonDiv = $("<div>");
+    var newButton = $("<button/>", 
+        {
+            text: inputTopic,
+        });
+    buttonDiv.append(newButton);
+    $("#buttonTarget").prepend(buttonDiv);
 })

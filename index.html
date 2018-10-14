@@ -20,29 +20,34 @@
     </style>
 
     <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" href="https://stickontattoos.github.io/Responsive-Portfolio/">Home</a>
     </nav>
-    </nav>
+
     <div class="container">
-        <div id="appendHere"></div>
+        <div class="row">
+            <div class="col">
+                <form id="searchForm">
+                    <label for="topicInput">Enter a topic</label>
+                    <input type="text" id="topicInput">
+                    <input id="addTopic" type="submit" value="Search">
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container2">
+        <div class="box" id="buttonTarget"></div>
+        </div>
+
+
 
         <div class="row">
-            <div class="col col-lg-12">
-                <button class="btn btn-outline-primary button" id="begin" type="input">Enter Gif-Land!</button>
+            <div class="col" id="imagesBox">
+                <div id="imagesTarget"></div>
             </div>
         </div>
-        
-        <div class="hidden row" id="searchForm">
-            <div class="col-lg-12">
-                <input class="form-control" type="text"></input>
-                <button class="btn btn-outline-success" id="searchButton" type="input">Search</button>
-            </div>
-        </div>
-
     </div>
-        
-   
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>

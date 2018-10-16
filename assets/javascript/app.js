@@ -13,12 +13,21 @@ function beholdTheGifs(topic) {
     }).then(function(response) {
         console.log(response);
 
+        
+
         var results = response.data
         for (var i = 0; i < results.length; i++) {
             var topicDiv = $("<div>");
             var p = $("<p>").text("Rating: " + results[i].rating);
-            var topicImage = $("<img>");
-            topicImage.attr("src", results[i].images.fixed_height.url);
+            var topicImage = $("<img>")
+            
+            
+
+
+            topicImage
+            .attr("src", results[i].images.fixed_height.url)
+            .attr("data-still", results[i].images.original_still.url)
+            .attr("data-animate", results[i].images.fixed_height.url);
             topicDiv.append(p);
             topicDiv.append(topicImage);
             $("#imagesTarget").prepend(topicDiv);
@@ -29,9 +38,9 @@ function beholdTheGifs(topic) {
 $("#addTopic").on("click", function (event) {
     (event).preventDefault();
     var inputTopic = $("#topicInput").val().trim();
+    
     beholdTheGifs (inputTopic);
-    console.log("Hello World");
-
+   
     var buttonDiv = $("<div>");
     var newButton = $("<button/>", 
         {
@@ -40,3 +49,17 @@ $("#addTopic").on("click", function (event) {
     buttonDiv.append(newButton);
     $("#buttonTarget").prepend(buttonDiv);
 })
+
+$(".gif").on("click", function() {
+    
+    var state = $(this).attr("data-state");
+  
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+  });
+
